@@ -1,8 +1,10 @@
+import React from "react";
+import Tarea from "./Components/Tarea";
 
 function App() {
   return (
     <div className="App">
-      hola nuevo pruebaVicente
+      <Tarea></Tarea>
     </div>
   );
 }
