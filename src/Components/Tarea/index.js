@@ -21,6 +21,11 @@ const Tarea = () => {
         console.log(task);
     }
 
+    const eliminarTarea = id => {
+        const arrayFiltrado = tareas.filter(item => item.id !== id)
+        setBD_Tareas(arrayFiltrado)
+    }
+
     return (
         <div className='container'>
             <div className='row'>
@@ -30,6 +35,10 @@ const Tarea = () => {
                         {BD_Tareas.map(item => (
                             <li key={item.id}>
                                 <>{item.NuevaTarea}</>
+                                <button onClick={() => eliminarTarea(item.id)}
+                                    className="btn btn-sm btn-danger float-right mx-2">
+                                    Eliminar
+                                </button>
                             </li>
                         ))}
                     </ul>
