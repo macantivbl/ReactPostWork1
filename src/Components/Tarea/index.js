@@ -22,7 +22,7 @@ const Tarea = () => {
     }
 
     const eliminarTarea = id => {
-        const arrayFiltrado = tareas.filter(item => item.id !== id)
+        const arrayFiltrado = BD_Tareas.filter(item => item.id !== id)
         setBD_Tareas(arrayFiltrado)
     }
 
