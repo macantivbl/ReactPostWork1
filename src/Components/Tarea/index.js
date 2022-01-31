@@ -6,7 +6,7 @@ const Tarea = () => {
 
     const agregarTarea = e => {
         e.preventDefault() //esto evita que recarge la pagina
-        console.log(task);
+
 
         if (setTask.length === 0) {
             console.log('la matriz de datos esta vacia');
@@ -15,16 +15,25 @@ const Tarea = () => {
         /*setBD_Tareas.push(...BD_Tareas, task)*/
         setBD_Tareas([
             ...BD_Tareas,
-            { id: (Math.random() * (1000 - 1) + 1), NuevaTarea: task }
+            {
+                id: Date.now(),
+                NuevaTarea: task,
+                TareaTerminada: false
+            }
+
         ])
-        //setTask('')
+        //setTask('')  
+
         console.log(task);
+        console.log(BD_Tareas);
     }
 
     const eliminarTarea = id => {
         const arrayFiltrado = BD_Tareas.filter(item => item.id !== id)
         setBD_Tareas(arrayFiltrado)
     }
+
+
 
     return (
         <div className='container'>
@@ -39,6 +48,27 @@ const Tarea = () => {
                                     className="btn btn-sm btn-danger float-right mx-2">
                                     Eliminar
                                 </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className='col-4'>
+                    <div>Tareas Terminadas</div>
+                    <ul className="list-group">
+
+                        {BD_Tareas.map(item => (
+
+                            <li key={item.id}>
+                                {console.log(item.TareaTerminada)}
+
+                                {item.TareaTerminada ? <div>hola</div> :
+
+                                    <button onClick={() => eliminarTarea(item.id)}
+                                        className="btn btn-sm btn-danger float-right mx-2">
+                                        Eliminar
+                                    </button>
+                                }
+
                             </li>
                         ))}
                     </ul>
